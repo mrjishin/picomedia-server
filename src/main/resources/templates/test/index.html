@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>File Upload Sample</title>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+$(() => {
+
+	const form = document.querySelector('form');
+	form.addEventListener('submit', function(){
+		event.preventDefault();
+
+		const target = $("input[name=target]").val();
+		const folder = $("input[name=folder]").val();
+		const file = $("input[type=file]")[0].files[0];
+
+	  const formData = new FormData();
+		formData.append("target", target);
+		formData.append("folder", folder);
+	  formData.append("file", file);
+	  const ACCESS_TOKEN = "[YOUR_API_KEY]";
+	  $.ajax({
+	    url : "/upload",
+	    type : "POST",
+	    contentType:false,
+      processData:false,
+	    data : formData,
+	    headers: {
+        'Authorization': 'Bearer ' + ACCESS_TOKEN
+      }
+	  })
+	  .done(function(data, textStatus, xhr){
+		  LOG(JSON.stringify(data));
+	    var fileName = data.url.substring(data.url.lastIndexOf('/')+1);
+	    const pos = data.url.indexOf('public/');
+	    const baseUrl = data.url.substring(0, pos+('public/').length - 1);
+	    const path = data.url.substring(pos+('public/').length);
+	    const resizeUrl = baseUrl + '/w_200,h_180/' + path;
+	    const resizeCropUrl = baseUrl + '/w_200,h_180,c_crop/' + path;
+		  $('#result').css('display', 'block');
+	    $('#a_org').attr('href', data.url)
+	    $('#a_org').text(data.url);
+	    $('#a_resize').attr('href', resizeUrl);
+	    $('#a_resize').text(resizeUrl);
+	    $('#a_resize_crop').attr('href', resizeCropUrl);
+	    $('#a_resize_crop').text(resizeCropUrl);
+	    alert('성공');	    
+	  })
+    .fail(function(xhr, textStatus, errorThrown){
+    	alert('실패');
+    	LOG(xhr.responseText);
+    	
+    });
+	});
+});
+function LOG(msg) {
+  const $log = $('textarea[name=log]');
+  $log.val($log.val() + '\n' + msg);
+}
+</script>
+</head>
+<body>
+<form method="post">
+  대상:
+  <input type="radio" id="target_public" name="target" value="public" required checked> <label for="target_public">public</label>
+  <input type="radio" id="target_private" name="target" value="private" required> <label for="target_private">private</label>
+  <br/><br/>
+  폴더: <input type="text" name="folder" size="50" value="folder1/folder2/folder3">
+  <br/><br/>
+  파일: <input type="file" name="file" accept="image/*" required>
+  <br/><br/>
+  <button type="submit">업로드</button>
+  <br/><br/>
+  <hr/>
+  <br/>
+  [LOG]<br/>
+  <textarea name="log" rows="10" cols="80"></textarea>
+</form>
+<br/>
+<div id="result" style="display:none;">
+  <h4>Dynamic URL Sample</h4>
+  <ul style="line-height: 180%;">
+    <li>
+      <span>Original URL:</span> <a id="a_org" target="_blank">보기</a>
+    </li>
+    <li>
+      <span>Resize URL:</span> <a id="a_resize" target="_blank">보기</a>
+    </li>
+    <li>
+      <span>Resize and crop URL:</span> <a id="a_resize_crop" target="_blank">보기</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

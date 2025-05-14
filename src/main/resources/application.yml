@@ -1,0 +1,23 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: picomedia-server
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+
+logging:
+  file:
+    name: logs/server.log
+    max-size: 50MB
+    max-history: 10
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  logback:
+    rollingpolicy:
+      file-name-pattern: "logs/server.log.%d{yyyy-MM-dd}.%i.log"
+  level:
+    root: info
+    kr.co.piconet.media.server: info

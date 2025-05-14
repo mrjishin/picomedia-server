@@ -1,0 +1,57 @@
+{"properties": [
+    {
+        "name": "spring.jpa.properties.hibernate.format_sql",
+        "type": "java.lang.Boolean"
+    }, {
+        "name": "picomedia.client-id",
+        "type": "java.lang.String"
+    }, {
+        "name": "picomedia.client-secret",
+        "type": "java.lang.String"
+    }, {
+        "name": "picomedia.access-token-expiration",
+        "type": "java.lang.String"
+    }, {
+        "name": "picomedia.refresh-token-expiration",
+        "type": "java.lang.String"
+    }, {
+        "name": "picomedia.aes.salt",
+        "type": "java.lang.String"
+    }, {
+        "name": "picomedia.aes.secret",
+        "type": "java.lang.String"
+    }, {
+        "name": "picomedia.email.enable",
+        "type": "java.lang.Boolean"
+    }, {
+        "name": "picomedia.sms.enable",
+        "type": "java.lang.Boolean"
+    }, {
+        "name": "picomedia.list.limit",
+        "type": "java.lang.Long"
+    }, {
+        "name": "aws.access-key",
+        "type": "java.lang.String"
+    }, {
+        "name": "aws.secret-key",
+        "type": "java.lang.String"
+    }, {
+        "name": "aws.region",
+        "type": "java.lang.String"
+    }, {
+        "name": "aws.s3.bucket",
+        "type": "java.lang.String"
+    }, {
+        "name": "aws.media-convert.role-arn",
+        "type": "java.lang.String"
+    }, {
+        "name": "ffmpeg.path",
+        "type": "java.lang.String"
+    }, {
+        "name": "ffprobe.path",
+        "type": "java.lang.String"
+    }, {
+        "name": "logging.level.kr.co.piconet.media.server",
+        "type": "java.lang.String"
+    }
+]}
