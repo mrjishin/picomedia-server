@@ -1,7 +1,5 @@
 /**
- * This file is part of Pico Media Server.
- *
- * Copyright 2024 PICONET
+ * Copyright 2024 Jaeik Shin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
