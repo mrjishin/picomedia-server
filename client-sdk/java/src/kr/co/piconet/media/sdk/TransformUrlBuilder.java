@@ -23,11 +23,15 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Usage:
- * 	String url = "http://localhost:9090/public/test/sample.jpg";
- * 	String transformUrl = TransformUrlBuilder.of(url).width(240).height(200).crop(false).build();
- * 	System.out.println(transformUrl); 
- */
+Usage:
+  String url = "http://localhost:9090/public/test/sample.jpg";
+  String transformUrl = TransformUrlBuilder.of(url)
+    .width(240)
+    .height(200)
+    .crop(false)
+    .build();
+  System.out.println(transformUrl); 
+*/
 public class TransformUrlBuilder {
 	private String url;
 	private int width;

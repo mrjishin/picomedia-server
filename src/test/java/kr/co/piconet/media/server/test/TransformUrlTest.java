@@ -18,29 +18,19 @@
 
 package kr.co.piconet.media.server.test;
 
-import java.io.File;
+import kr.co.piconet.media.sdk.TransformUrlBuilder;
 
-import kr.co.piconet.media.sdk.PicoMediaUploader;
-
-public class FileUploadTest {
+public class TransformUrlTest {
 
 
 	public static void main(String[] args) {
 
-		String endpoint = "http://localhost:9090";
-		String apiKey = "[YOUR_ACCESS_TOKEN]";
-		File file = new File("./sample.jpg");
-		try {
-			PicoMediaUploader.PicoMediaUploadResult uploadResult = PicoMediaUploader.of(endpoint, apiKey)
-				.target(PicoMediaUploader.Target.PUBLIC)
-				.folder("test1/test2")
-				.upload(file);
-
-			String url = uploadResult.url();
-			System.out.format("picomedia.upload.result.url: %s%n", url);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println("Done...");
+		String url = "http://localhost:9090/public/test/sample.jpg";
+	    String transformUrl = TransformUrlBuilder.of(url)
+	      .width(240)
+	      .height(200)
+	      .crop(false)
+	      .build();
+	    System.out.println(transformUrl); 
 	}
 }

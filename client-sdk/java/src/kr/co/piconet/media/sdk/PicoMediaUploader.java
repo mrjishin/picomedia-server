@@ -36,6 +36,23 @@ import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+Usage:
+  String endpoint = "http://localhost:9090";
+  String apiKey = "[YOUR_ACCESS_TOKEN]";
+  File file = new File("./sample.jpg");
+  try {
+    PicoMediaUploader.PicoMediaUploadResult uploadResult = PicoMediaUploader.of(endpoint, apiKey)
+      .target(PicoMediaUploader.Target.PUBLIC)
+      .folder("test1/test2/test3")
+      .upload(file);
+
+    String url = uploadResult.url();
+    System.out.format("picomedia.upload.result.url: %s%n", url);
+  } catch (Exception e) {
+	  e.printStackTrace();
+  }
+ */
 public class PicoMediaUploader
 {
 	public enum Target {
