@@ -1,7 +1,6 @@
 # picomedia-server
 
-- Image Resize Server
-- File Server
+- Image Resize Server & File Server
 
 
 - origin image url: http://localhost:9090/test/sample.jpg
