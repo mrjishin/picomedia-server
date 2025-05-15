@@ -71,7 +71,7 @@ dependencies {
   implementation 'org.imgscalr:imgscalr-lib:4.2'
 }
 
-sourceSets.main.java.srcDirs += ['src/picomedia-sdk/java']
+sourceSets.main.java.srcDirs += ['client-sdk/java/src']
 
 tasks.named('test') {
 	useJUnitPlatform()
